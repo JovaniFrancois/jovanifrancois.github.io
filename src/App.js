@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Home from './components/Home';
 
-function App() {
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="header-top">
+          <div className="avatar">JF</div>
+          <div className="title-block">
+            <div className="title-name">Jovani Francois</div>
+            <div className="title-sub muted">Computer Science • University of Florida</div>
+          </div>
+        </div>
+
+        <nav className="nav">
+          <button className="tab" onClick={() => scrollToId('home')}>Home</button>
+          <button className="tab" onClick={() => scrollToId('about')}>About</button>
+          <button className="tab" onClick={() => scrollToId('education')}>Education</button>
+          <button className="tab" onClick={() => scrollToId('projects')}>Projects</button>
+          <button className="tab" onClick={() => scrollToId('contact')}>Contact</button>
+        </nav>
+
+        <main className="content">
+          <Home />
+        </main>
       </header>
     </div>
   );
 }
-
-export default App;
